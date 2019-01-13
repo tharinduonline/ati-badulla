@@ -30,3 +30,8 @@
 <p><code>php artisan migrate --seed</code></p>
 <p>You can then use PHPUnit</p>
 </article>
+
+## ogin Details (url/login)
+## Email - admin@admin.com
+  
+## password - 123456
