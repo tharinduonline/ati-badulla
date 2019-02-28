@@ -1,45 +1,27 @@
- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                        <div class="sidebar">
-                            <div class="sidebar-box">
-                                <div class="sidebar-box-inner">
-                                    <h3 class="sidebar-title">Search</h3>
-                                    <div class="sidebar-find-course">
-                                        <form id="checkout-form">
-                                            <div class="form-group course-name">
-                                                <input id="first-name" placeholder="Type Here . . .." class="form-control" type="text">
+
+                    <div class="col-lg-4 col-xl-4">
+                            <aside  class="side-bar sticky-top">
+                               
+                                <div class="widget recent-posts-entry">
+                                    <h6 class="widget-title">Recent News</h6>
+                                    <div class="widget-post-bx">
+                                            @foreach($news->posts()->orderBy('created_at', 'desc')->take(8)->get() as $post)
+                                        <div class="widget-post clearfix">
+                                            <div class="ttr-post-media"> <img src="{{ $post->featured }}" width="200" height="143" alt=""> </div>
+                                            <div class="ttr-post-info">
+                                                <div class="ttr-post-header">
+                                                    <h6 class="post-title"><a href="{{ route('post.single', ['slug' => $post->slug ]) }}">{{ $post->title }}</a></h6>
+                                                </div>
+                                                <ul class="media-post">
+                                                    <li><a href="{{ route('post.single', ['slug' => $post->slug ]) }}"><i class="fa fa-calendar"></i>{{ $post->created_at->toFormattedDateString() }}</a></li>
+                                                 
+                                                </ul>
                                             </div>
-                                            <div class="form-group">
-                                                <button class="sidebar-search-btn-full disabled" type="submit" value="Login">Search</button>
-                                            </div>
-                                        </form>
+                                        </div>
+                                        @endforeach
+
                                     </div>
                                 </div>
-                            </div>
-                            <div class="sidebar-box">
-                                <div class="sidebar-box-inner">
-                                    <h3 class="sidebar-title">Latest News</h3>
-                                    <div class="sidebar-latest-research-area">
-                                        <ul>
-
-@foreach($news->posts()->orderBy('created_at', 'desc')->take(8)->get() as $post)
-
-                                            <li>
-                                                <div class="latest-research-img">
-                                                    <a href="{{ route('post.single', ['slug' => $post->slug ]) }}"><img src="{{ $post->featured }}" class="img-responsive" alt="skilled"></a>
-                                                </div>
-                                                <div class="latest-research-content">
-                                                    <h4>{{ $post->created_at->toFormattedDateString() }}</h4>
-                                                    <a href="{{ route('post.single', ['slug' => $post->slug ]) }}"><p>{{ $post->title }}</p></a>
-                                                </div>
-                                            </li>
-                            @endforeach
-
-                                           
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
                           
+                            </aside>
                         </div>
-                    </div>

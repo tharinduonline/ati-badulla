@@ -1,69 +1,49 @@
-<!doctype html>
-<html class="no-js" lang="">
+@extends('layouts.front')
 @section('title', 'News')
-   @include('pages.includes.head')
-@section('class5', 'active')
-<body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <!-- Add your site or application content here -->
-    <!-- Preloader Start Here -->
-    <!--<div id="preloader"></div> -->
-    <!-- Preloader End Here -->
-    <!-- Main Body Area Start Here -->
-    <div id="wrapper">
-        <!-- Header Area Start Here -->
-      @include('pages.includes.header')
-        <!-- Header Area End Here -->
-<div class="inner-page-banner-area" style="background-image: url('https://www.radiustheme.com/demo/html/academics/academics/img/banner/5.jpg');">
-            <div class="container">
-                <div class="pagination-area">
-                    <h1>Our News</h1>
-                    <ul>
-                        <li><a href="#">Home</a> -</li>
-                        <li>News</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+@section('class3', 'active')
+@section('content')
 
-<div class="news-page-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-8 col-xs-12">
-                        <div class="row">
-                     
-                             @if($posts->count() > 0)
-                                    @foreach($posts->reverse() as $post)
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                <div class="news-box">
-                                    <div class="news-img-holder">
-                                        <img src="{{ $post->featured }}" class="img-responsive" alt="research">
-                                        <ul class="news-date2">
-                                            <li>27 Dec</li>
-                                            <li>2016</li>
-                                        </ul>
-                                    </div>
-                                    <h3 class="title-news-left-bold"><a href="{{ route('post.single', ['slug' => $post->slug ]) }}">{{ $post->title }}</a></h3>
-                                  
-                                </div>
+
+<div class="page-banner ovbl-dark" style="background-image:url(assets/images/banner/banner1.jpg);">
+    <div class="container">
+        <div class="page-banner-entry">
+            <h1 class="text-white">ATI NEWS</h1>
+         </div>
+    </div>
+</div>
+
+
+<div class="content-block">
+   
+    <div class="section-area section-sp1">
+        <div class="container">
+            <div class="ttr-blog-grid-3 row" id="masonry">
+
+                    @if($posts->count() > 0)
+                    @foreach($posts->reverse() as $post)
+                <div class="post action-card col-lg-4 col-md-6 col-sm-12 col-xs-12 m-b40">
+                    <div class="recent-news">
+                        <div class="action-box">
+                            <img src="{{ $post->featured }}" alt="{{ $post->title }}">
+                        </div>
+                        <div class="info-bx">
+                            <ul class="media-post">
+                                <li><a href="{{ route('post.single', ['slug' => $post->slug ]) }}"><i class="fa fa-calendar"></i> {{ $post->created_at->toFormattedDateString() }}</a></li>
+                            </ul>
+                            <h5 class="post-title"><a href="{{ route('post.single', ['slug' => $post->slug ]) }}">{{ $post->title }}</a></h5>
+                            <p>{!! str_limit($post->content, 100) !!}</p>
+                            <div class="post-extra">
+                                <a href="{{ route('post.single', ['slug' => $post->slug ]) }}" class="btn-link">READ MORE</a>
                             </div>
-                           @endforeach
-                           @endif
-
                         </div>
                     </div>
-
                 </div>
+                @endforeach
+                @endif
             </div>
+          
         </div>
     </div>
-
-        <!-- Students Join 2 Area End Here -->
-        <!-- Footer Area Start Here -->
-   @include('pages.includes.footer')
-</body>
-
-
-</html>
+   
+</div>
+@stop

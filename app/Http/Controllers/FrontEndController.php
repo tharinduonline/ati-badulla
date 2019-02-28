@@ -9,22 +9,103 @@ use App\Setting;
 use App\Gallery;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class FrontEndController extends Controller
 {
 
     public function index()
     {
-        return view('index')
-                ->with('title', Setting::first()->site_name)
+
+        $events = Event::orderBy('created_at','desc')->paginate(6);
+        $posts = Post::orderBy('created_at','desc')->paginate(3);
+
+        return View('index',['events' => $events,'posts' => $posts])
+        ->with('title', Setting::first()->site_name)
                 ->with('categories', Category::all())
-                ->with('first_post', Post::orderBy('created_at', 'desc')->first())
-                ->with('second_post', Post::orderBy('created_at', 'desc')->skip(1)->take(1)->get()->first())
-                ->with('third_post', Post::orderBy('created_at', 'desc')->skip(2)->take(1)->get()->first())
-                ->with('first_event', Event::orderBy('created_at', 'desc')->first())
                 ->with('news', Category::find(2))
                 ->with('settings', Setting::first());
+
+       /* return view('index')
+                ->with('title', Setting::first()->site_name)
+                ->with('categories', Category::all())
+                ->with('news', Category::find(2))
+                ->with('settings', Setting::first()); */
     }
+
+    public function about()
+    {
+
+        $events = Event::orderBy('created_at','desc')->paginate(6);
+        $posts = Post::orderBy('created_at','desc')->paginate(3);
+
+        return View('pages.aboutus',['events' => $events,'posts' => $posts])
+        ->with('title', Setting::first()->site_name)
+                ->with('categories', Category::all())
+                ->with('news', Category::find(2));
+    }
+
+    public function hndit()
+    {
+
+        $events = Event::orderBy('created_at','desc')->paginate(6);
+        $posts = Post::orderBy('created_at','desc')->paginate(3);
+
+        return View('pages.hndit',['events' => $events,'posts' => $posts])
+        ->with('title', Setting::first()->site_name)
+                ->with('categories', Category::all())
+                ->with('news', Category::find(2));
+    }
+
+    
+    public function hnda()
+    {
+
+        $events = Event::orderBy('created_at','desc')->paginate(6);
+        $posts = Post::orderBy('created_at','desc')->paginate(3);
+
+        return View('pages.hnda',['events' => $events,'posts' => $posts])
+        ->with('title', Setting::first()->site_name)
+                ->with('categories', Category::all())
+                ->with('news', Category::find(2));
+    }
+
+    public function hndm()
+    {
+
+        $events = Event::orderBy('created_at','desc')->paginate(6);
+        $posts = Post::orderBy('created_at','desc')->paginate(3);
+
+        return View('pages.hndm',['events' => $events,'posts' => $posts])
+        ->with('title', Setting::first()->site_name)
+                ->with('categories', Category::all())
+                ->with('news', Category::find(2));
+    }
+
+    public function english()
+    {
+
+        $events = Event::orderBy('created_at','desc')->paginate(6);
+        $posts = Post::orderBy('created_at','desc')->paginate(3);
+
+        return View('pages.english',['events' => $events,'posts' => $posts])
+        ->with('title', Setting::first()->site_name)
+                ->with('categories', Category::all())
+                ->with('news', Category::find(2));
+    }
+
+    public function hndthm()
+    {
+
+        $events = Event::orderBy('created_at','desc')->paginate(6);
+        $posts = Post::orderBy('created_at','desc')->paginate(3);
+
+        return View('pages.hndthm',['events' => $events,'posts' => $posts])
+        ->with('title', Setting::first()->site_name)
+                ->with('categories', Category::all())
+                ->with('news', Category::find(2));
+    }
+
 
     public function events()
     {

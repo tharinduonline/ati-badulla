@@ -1,82 +1,55 @@
-<!doctype html>
-<html class="no-js" lang="">
+@extends('layouts.front')
 @section('title', 'Events')
-   @include('pages.includes.head')
-@section('class6', 'active')
-<body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <!-- Add your site or application content here -->
-    <!-- Preloader Start Here -->
-    <!--<div id="preloader"></div> -->
-    <!-- Preloader End Here -->
-    <!-- Main Body Area Start Here -->
-    <div id="wrapper">
-        <!-- Header Area Start Here -->
-      @include('pages.includes.header')
-        <!-- Header Area End Here -->
-<div class="inner-page-banner-area" style="background-image: url('https://www.radiustheme.com/demo/html/academics/academics/img/banner/5.jpg');">
-            <div class="container">
-                <div class="pagination-area">
-                    <h1>Our Upcoming Events</h1>
-                    <ul>
-                        <li><a href="#">Home</a> -</li>
-                        <li>Events</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+@section('class5', 'active')
+@section('content')
 
-<div class="event-page-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
-                        <div class="row event-inner-wrapper">
+   <!-- inner page banner -->
+<div class="page-banner ovbl-dark" style="background-image:url({{ asset('/assets/images/banner/banner3.jpg')}});">
+    <div class="container">
+        <div class="page-banner-entry">
+            <h1 class="text-white">Events</h1>
+         </div>
+    </div>
+</div>
 
-                             @if($events->count() > 0)
-                                    @foreach($events->reverse() as $event)
-                                    
-                            <div class="col-lg-12 col-md-6 col-sm-12 col-xs-6">
-                                <div class="single-item">
-                                    <div class="item-img">
-                                        <a href="{{ route('event.single', ['slug' => $event->slug ]) }}"><img src="{{ $event->featured }}" alt="{ $event->title }}" class="img-responsive"></a>
-                                    </div>
-                                    <div class="item-content">
-                                        <h3 class="sidebar-title"><a href="{{ route('event.single', ['slug' => $event->slug ]) }}">{{ $event->title }}</a></h3>
-                                        <ul class="event-info-block">
-                                            <li><i class="fa fa-calendar" aria-hidden="true"></i>{{ $event->start_date }}</li>
-                                            <li><i class="fa fa-map-marker" aria-hidden="true"></i>{{ $event->address }}</li>
-                                        </ul>
+<!-- contact area -->
+<div class="content-block">
+    <!-- Portfolio  -->
+    <div class="section-area section-sp1 gallery-bx">
+        <div class="container">
+            
+            <div class="clearfix">
+                <ul id="masonry" class="ttr-gallery-listing magnific-image row">
+
+                        @foreach($events->reverse() as $t)
+                    <li class="action-card col-lg-6 col-md-6 col-sm-12 happening">
+                        <div class="event-bx m-b30">
+                            <div class="action-box">
+                                <img src="{{ $t->featured }}" alt="">
+                            </div>
+                            <div class="info-bx d-flex">
+                                <div>
+                                    <div class="event-time">
+                                            <div class="event-date">{{ $t->start_date->format('d') }}</div>
+                                            <div class="event-month">{{ $t->start_date->format('F') }}</div>
                                     </div>
                                 </div>
+                                <div class="event-info">
+                                    <h4 class="event-title"><a href="{{ route('event.single', ['slug' => $t->slug ]) }}">Education Autumn Tour 2019</a></h4>
+                                    <ul class="media-post">
+                                            <li><a href="{{ route('event.single', ['slug' => $t->slug ]) }}"><i class="fa fa-map-marker"></i> {{ $t->address }}</a></li>
+                                    </ul>
+                                    <p>{!! str_limit($t->description, 100) !!}</p>
+                                </div>
                             </div>
-                             @endforeach
-                              @else
-                              @endif
-                            
-                           <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <ul class="pagination-center">
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                </ul>
-                            </div>-->
                         </div>
-                    </div>
-                     @include('pages.includes.rightside')
-                </div>
+                    </li>
+                    @endforeach
+            
+                </ul>
             </div>
         </div>
-
-
     </div>
-
-        <!-- Students Join 2 Area End Here -->
-        <!-- Footer Area Start Here -->
-   @include('pages.includes.footer')
-</body>
-
-
-</html>
+</div>
+<!-- contact area END -->
+@stop

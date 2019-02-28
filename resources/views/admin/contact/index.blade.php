@@ -27,11 +27,11 @@
                 @if($contacts->count() > 0)
                     @foreach($contacts as $contact)
                         <tr>
-                            <td></td>
+                            <td>{{ $contact->name }}</td>
 
-                            <td></td>
+                            <td>{{ $contact->email }}</td>
 
-                            <td>
+                            <td>{{ $contact->msg }}
 
                             </td>
 

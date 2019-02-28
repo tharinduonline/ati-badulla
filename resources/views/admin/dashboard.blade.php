@@ -62,6 +62,16 @@
                     </div>
                 </div>
             </div>
+    <div class="col-lg-3">
+        <div class="panel panel-info">
+            <div class="panel-heading text-center">
+                MESSAGES
+            </div>
+            <div class="panel-body">
+                <h1 class="text-center">{{ $contacts_count }}</h1>
+            </div>
+        </div>
+    </div>
 
         </div>
     </div>

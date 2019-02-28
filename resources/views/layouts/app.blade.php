@@ -38,7 +38,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <!-- Branding Image -->
+               
                     <a class="navbar-brand" href="{{ url('/') }}">
                         SLIATE - Badulla
                     </a>
@@ -92,7 +92,7 @@
                 <li class="list-group-item"> <a href="{{ route('home') }}"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
                 <li class="list-group-item"> <a href="{{ route('post.create') }}"><i class="fa fa-file-text" aria-hidden="true"></i> Create News</a></li>
                 <li class="list-group-item"> <a href="{{ route('event.create') }}"><i class="fa fa-file-text" aria-hidden="true"></i> Create Event</a></li>
-                 <li class="list-group-item"> <a href="{{ route('gallery') }}"><i class="fa fa-file-text" aria-hidden="true"></i> Gallery</a></li>
+                <!-- <li class="list-group-item"> <a href="{{ route('gallery') }}"><i class="fa fa-file-text" aria-hidden="true"></i> Gallery</a></li> -->
                  @if(Auth::user()->admin)
                  <li class="list-group-item"> <a href="{{ route('users') }}"><i class="fa fa-users" aria-hidden="true"></i> Users</a></li>
                  <li class="list-group-item"> <a href="{{ route('user.create') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> New User</a></li>

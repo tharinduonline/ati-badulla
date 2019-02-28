@@ -11,6 +11,12 @@
 |
 */
 Route::get('/', ['uses' => 'FrontEndController@index','as' => 'index']);
+Route::get('/about', ['uses' => 'FrontEndController@about','as' => 'about']);
+Route::get('/information-technology', ['uses' => 'FrontEndController@hndit','as' => 'hndit']);
+Route::get('/accountancy', ['uses' => 'FrontEndController@hnda','as' => 'hnda']);
+Route::get('/management', ['uses' => 'FrontEndController@hndm','as' => 'hndm']);
+Route::get('/english', ['uses' => 'FrontEndController@english','as' => 'english']);
+Route::get('/tourism-and-hospitality-management', ['uses' => 'FrontEndController@hndthm','as' => 'hndthm']);
 
 Route::get('/news', ['uses' => 'PostsController@posts','as' => 'posts']);
 Route::get('/events', ['uses' => 'FrontEndController@events','as' => 'events']);
@@ -21,7 +27,7 @@ Route::get('/contact-us', ['uses' => 'FrontEndController@contactus','as' => 'con
 Route::get('/event/{slug}', ['uses' => 'FrontEndController@singleEvent','as' => 'event.single']);
 Route::get('/category/{id}', ['uses' => 'FrontEndController@category','as' => 'category.single']);
 Route::get('/tag/{id}', ['uses' => 'FrontEndController@tag','as' => 'tag.single']);
-Route::post('/contact/store', ['uses' => 'ContactsController@store','as' => 'Contact.store']);
+Route::post('/contact/store', ['uses' => 'ContactsController@store','as' => 'contact.store']);
 Route::get('/results', function(){
         $posts = \App\Post::where('title','like',  '%' . request('query') . '%')->get();
 

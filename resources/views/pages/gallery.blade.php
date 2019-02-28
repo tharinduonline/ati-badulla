@@ -1,49 +1,19 @@
-<!doctype html>
-<html class="no-js" lang="">
-
+@extends('layouts.front')
 @section('title', 'Gallery')
-@include('pages.includes.head')
-@section('class7', 'active')
-<body>
-<div id="wrapper">
-        <!-- Header Area Start Here -->
-      @include('pages.includes.header')
+@section('class6', 'active')
+@section('content')
 
-<div class="inner-page-banner-area" style="background-image: url('img/banner/5.jpg');">
-            <div class="container">
-                <div class="pagination-area">
-                </div>
-            </div>
-        </div>
-
-        <div class="gallery-area2">
-            <div class="container" id="inner-isotope">
-
-                @if( $galleries->count() )
-                    @foreach($galleries as $gallery)
-                <div class="row featuredContainer gallery-wrapper" style="position: relative; height: 522.218px;">
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 library auditoriam" style="position: absolute; left: 0px; top: 0px;">
-                        <div class="gallery-box">
-                            <img src="{{  asset($gallery->cover_image) }}" class="img-responsive" alt="gallery">
-
-                            <div class="gallery-content">
-                                <a href="{{ url('/album/'.$gallery->id ) }}"><i class="fa fa-link" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="isotop-classes-tab isotop-btn">
-                            <a href="#" data-filter="*" class="">{{ $gallery->name  }}</a></div>
-                        </div>
-                    </div>
-             @endforeach
-            @endif
-
-                </div>
-            </div>
-        </div>
-
-       
-        <!-- Footer Area Start Here -->
-   @include('pages.includes.footer')
-</body>
+<div class="page-banner ovbl-dark" style="background-image:url(assets/images/banner/banner3.jpg);">
+    <div class="container">
+        <div class="page-banner-entry">
+            <h1 class="text-white">Gallery</h1>
+         </div>
+    </div>
+</div>
 
 
-</html>
+<div class='embedsocial-album' data-ref="78cbbc3831e8bc4600ae73513658fb2974c63e9d"></div><script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/embedscript/ei.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialScript"));</script>
+<div class='embedsocial-album' data-ref="5feb10dcc2fdf983c466ea1b8f4521fc32a5e6d2"></div><script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/embedscript/ei.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialScript"));</script>
+<div class='embedsocial-album' data-ref="403786b4530b0a28db5b6ec5c12a9df52d555554"></div><script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/embedscript/ei.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialScript"));</script>
+<div class='embedsocial-album' data-ref="424b2d2c2aa9465dc7f87c318f2fba82b8814919"></div><script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/embedscript/ei.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialScript"));</script>
+@stop

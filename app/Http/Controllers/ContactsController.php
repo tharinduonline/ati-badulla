@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use Session;
 use Illuminate\Http\Request;
 
 class ContactsController extends Controller
